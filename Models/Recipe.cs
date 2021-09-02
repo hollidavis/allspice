@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace allspice.Models
 {
     public class Recipe
