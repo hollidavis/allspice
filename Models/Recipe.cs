@@ -12,7 +12,6 @@ namespace allspice.Models
         public string Body{get; set;}
         public int CookTime{get; set;}
         public int PrepTime{get; set;}
-        [Required]
         public string CreatorId{get; set;}
         public Profile Creator { get; set; }
     }
