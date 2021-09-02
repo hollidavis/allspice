@@ -23,5 +23,10 @@ namespace allspice.Services
       }
       return recipe;
     }
+
+    internal Recipe Create(Recipe newRecipe)
+    {
+      return _repo.Create(newRecipe);
+    }
   }
 }

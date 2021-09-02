@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -26,6 +27,7 @@ namespace allspice.Repositories
          }, splitOn: "id").ToList();
       }
 
+
     internal Recipe Get(int id){
         string sql = @"
         SELECT
@@ -40,6 +42,18 @@ namespace allspice.Repositories
             recipe.Creator = profile;
             return recipe;
         }, new { id }, splitOn: "id").FirstOrDefault();
+    }
+    internal Recipe Create(Recipe newRecipe)
+    {
+      string sql = @"
+      INSERT INTO recipes
+      (title, body, cookTime, prepTime, creatorId)
+      VALUES
+      (@Title, @Body, @CookTime, @PrepTime, @CreatorId);
+      SELECT LAST_INSERT_ID();
+      ";
+      int id = _db.ExecuteScalar<int>(sql, newRecipe);
+      return Get(id);
     }
   }
 }
