@@ -14,5 +14,14 @@ namespace allspice.Services
         internal List<Recipe> Get(){
             return _repo.Get();
         }
+
+    internal Recipe Get(int id){
+      Recipe recipe = _repo.Get(id);
+      if (recipe == null)
+      {
+        throw new Exception("Invalid Id");
+      }
+      return recipe;
+    }
   }
 }
